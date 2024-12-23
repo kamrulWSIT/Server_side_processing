@@ -8,8 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.4.3/css/scroller.dataTables.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/keytable/2.12.1/css/keyTable.dataTables.css">
 
 
     <title>Server-side processing </title>
@@ -33,31 +31,22 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/scroller/2.4.3/js/dataTables.scroller.js"></script>
-<script src="https://cdn.datatables.net/scroller/2.4.3/js/scroller.dataTables.js"></script>
-<script src="https://cdn.datatables.net/keytable/2.12.1/js/dataTables.keyTable.js"></script>
-<script src="https://cdn.datatables.net/keytable/2.12.1/js/keyTable.dataTables.js"></script>
 
 
 
 <script>
-    setTimeout(() => {
-        new DataTable('#myTable', {
-            ajax: '{{ route('getPeople') }}',
-            processing: true,
-            ordering: false,
-            scroller: true,
-            scrollY: 200,
-            searching: false,
-            serverSide: true,
-            columns: [
-                { data: 'id' },
-                { data: 'name' },
-                { data: 'email' },
-                { data: 'country' }
-            ]
-        });
-    }, 150);
+    new DataTable('#myTable', {
+        ajax: '{{ route('getPeople') }}',
+        processing: true,
+        serverSide: true,
+        columns: [
+            { data: 'id' },
+            { data: 'name' },
+            { data: 'email' },
+            { data: 'country' }
+        ]
+
+    });
 </script>
 
 

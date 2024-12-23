@@ -15,8 +15,15 @@ class PeopleController extends Controller
 
     public function getPeoples(Request $request)
     {
-        $people = People::query();
 
-        return datatables($people)->toJson();
+        if ($request->ajax()) {
+            $people = People::all();
+
+            return DataTables::of($people)
+                ->make(true);
+        }
+
+        return abort(403, 'Unauthorized action.');
+
     }
 }
